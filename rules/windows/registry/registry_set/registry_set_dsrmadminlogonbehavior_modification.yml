@@ -1,0 +1,30 @@
+title: Detect Modification of DsrmAdminLogonBehavior Registry Key
+id: e172339f-654a-448d-ba83-5b2cbbe65b29
+status: experimental
+description: This rule detects a persistence technique where the "DsrmAdminLogonBehavior" registry key under HKLM\System\CurrentControlSet\Control\Lsa is modified to
+  the value "2".
+references:
+  - https://adsecurity.org/?p=1714
+  - https://adsecurity.org/?p=1785
+author: Chems-eddine Dahmani (@ChouchWard)
+date: 2023/12/14
+modified: N/A
+tags:
+  - attack.persistence
+  - att&ck.T1098
+logsource:
+  category: registry
+  product: windows
+detection:
+  selection:
+    Key: 'HKLM\\System\\CurrentControlSet\\Control\\Lsa\\DsrmAdminLogonBehavior'
+    Value: '2'
+  condition: selection
+falsepositives:
+  - Legitimate administrative activities that involve changing the DsrmAdminLogonBehavior registry key value.
+level: high
+
+
+
+
+
